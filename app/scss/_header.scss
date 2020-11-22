@@ -1,10 +1,12 @@
 .header {
+  border-bottom: 2px solid #f8f8f8;
   // Hamburger Open styles
+
   &.open {
     .overlay {
       display: block;
     }
-    .header__menu {
+    .header__toggle {
       > span:first-child {
         top: 14px;
         transform: rotate(45deg);
@@ -25,13 +27,16 @@
     opacity: 0;
     background-image: linear-gradient($darkBlue, transparent);
     position: fixed;
-    top: 60px;
+    top: 0;
     left: 0;
     right: 0;
     bottom: 0;
   }
   nav {
-    padding: 1.0625rem 1.5rem;
+    position: relative;
+    background-color: $white;
+    padding-top: 1.0625rem;
+    padding-bottom: 1.0625rem;
   }
   &__logo {
     width: 8.8125rem;
@@ -41,8 +46,8 @@
   img {
   }
 
-  &__menu {
-    //mobile menu
+  &__toggle {
+    //mobile menu toggle
 
     > span {
       display: block;
@@ -55,6 +60,24 @@
       &:not(:last-child) {
         margin-bottom: 5px;
       }
+    }
+  }
+
+  &__menu {
+    background-color: $white;
+    padding: 1.625rem;
+    border-radius: 5px;
+    position: absolute;
+    width: calc(100% - 3rem);
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 1.7rem;
+
+    a {
+      color: $darkBlue;
+      display: block;
+      padding: 0.625rem;
+      text-align: center;
     }
   }
 
@@ -87,16 +110,6 @@
           opacity: 1;
         }
       }
-    }
-  }
-
-  &__cta {
-    font-size: $font-small;
-    color: $white;
-    transition: opacity 300ms ease-in-out;
-
-    &:hover {
-      opacity: 0.75;
     }
   }
 }
