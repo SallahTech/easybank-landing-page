@@ -1,3 +1,40 @@
+@keyframes fade-in {
+  from {
+    visibility: hidden;
+    opacity: 0;
+  }
+  1% {
+    visibility: visible;
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fade-in 300ms ease-in-out forwards;
+}
+
+@keyframes fade-out {
+  from {
+    visibility: visible;
+    opacity: 1;
+  }
+  99% {
+    visibility: visible;
+    opacity: 0;
+  }
+  to {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+.fade-out {
+  animation: fade-out 300ms ease-in-out forwards;
+}
+
 html {
   font-size: 100%;
   box-sizing: border-box;
@@ -64,6 +101,33 @@ button,
   }
 }
 
+.header.open .overlay {
+  display: block;
+}
+
+.header.open .header__menu > span:first-child {
+  top: 14px;
+  transform: rotate(45deg);
+}
+
+.header.open .header__menu > span:nth-child(2) {
+  opacity: 0;
+}
+
+.header.open .header__menu > span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+.header .overlay {
+  opacity: 0;
+  background-image: linear-gradient(#2d314d, transparent);
+  position: fixed;
+  top: 60px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
 .header nav {
   padding: 1.0625rem 1.5rem;
 }
@@ -73,15 +137,17 @@ button,
   height: 1.375rem;
 }
 
-.header__menu span {
+.header__menu > span {
   display: block;
   width: 26px;
   height: 2px;
   background: #2d314d;
+  transition: all 300ms ease-in-out;
+  transform-origin: 3px 1px;
 }
 
-.header__menu span:not(:last-child) {
-  margin-bottom: 3px;
+.header__menu > span:not(:last-child) {
+  margin-bottom: 5px;
 }
 
 .header__links a {
